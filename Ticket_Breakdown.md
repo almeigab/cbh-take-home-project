@@ -35,33 +35,46 @@ Agent
 
 1 - Create a new table `FacilityAgent`
 - Implementation details
+
     Create a migration that creates the table `FacilityAgent` in our database, with the following columns:
         - custom_id varchar NOT NULL
         - facility_id `FK Facility` NOT NULL
         - agent_id `FK Agent` NOT NULL
+
 - Acceptance criteria
+
     The table should be crated with the 3 columns, such as it was specified above.
+
 - Time/effort estimates
+
     Small
 
 2 - Create new endpoint to register agent's custom id on the API
 - Implementation details
+
     Create a repository connection to the table `FacilityAgent`
     Create a service that creates or update an entry into `FacilityAgent`, given the `facility_id`, the `agent_id` and the new `custom_id`
     Create a controller to the new endpoint `POST facility/:facility_id/agent/:agent_id/custom_id`
 
 - Acceptance criteria
+
     It should be able to create new custom id to an agent for a given facility
     If there already is a custom id for this agent-facility, it should be updated
+
 - Time/effort estimates
+
     Medium
 
 3 - Update the function `generateReport` to consider custom id
 - Implementation details
+
     Create a service that retrieves an entry from `FacilityAgent`, given the `facility_id`, the `agent_id`
     Update the function `generateReport` to retrieve custom ids using this new service, for every agent listed
 
 - Acceptance criteria
+
     It should show the custom id for the agents, if there is. Otherwise, show the internal id.
+
 - Time/effort estimates
-    Medium
+
+    Mediumg
