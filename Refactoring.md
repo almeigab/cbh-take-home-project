@@ -9,3 +9,12 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+If the arg `event` is falsy, the variable candidate will be empty, so we can assume that the result will be the TRIVIAL_PARTITION_KEY, since it's length is less then 256. That's why We can also remove the `if (candidate)` clause.
+
+Since `Hash.digest` always returns a `string`, we can avoid testing the `candidate` type, when there is no `partitionKey` prop in `event`.
+
+I've used a ternary operator to evaluate if `event.partitionKey` is a `string` to avoid nested ifs.
+
+The function `hashString` was created to avoid re-writing the hashing code.
+
+All tests passed both the refactored and original versions.
